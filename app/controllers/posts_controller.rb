@@ -1,14 +1,14 @@
 class PostsController < ApplicationController
+  before_action :set_post!, only: [:show, :edit, :update]
   def show
-    @post = Post.find(params[:id])
+   
   end
 
   def edit
-    @post = Post.find(params[:id])
+   
   end
 
   def update
-    @post = Post.find(params[:id])
     @post.title = params[:title]
     @post.category = params[:category]
     @post.content = params[:content]
@@ -24,5 +24,9 @@ class PostsController < ApplicationController
 
   def post_params
     params.permit(:title, :category, :content)
+  end
+
+  def set_post!
+    @post = Post.find(params[:id])
   end
 end
